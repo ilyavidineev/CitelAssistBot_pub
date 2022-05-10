@@ -1,0 +1,4 @@
+target/*
+src/main/resources/bot.properties
+scripts/*
+log_file.log
