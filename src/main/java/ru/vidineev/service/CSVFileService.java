@@ -67,22 +67,16 @@ public class CSVFileService {
         File file = null;
         URL location = CoreBot.class.getProtectionDomain().getCodeSource().getLocation();
         String codeLocation = location.toString();
-        log.info("codeLocation: " + codeLocation);
-
 
         try {
             if (codeLocation.endsWith(".jar")) {
                 //Call from jar
-                log.info("Call from jar detected");
                 Path path = Paths.get(location.toURI()).resolve("../" + relativePath).normalize();
-                log.info("path: " + path.toString());
                 file = path.toFile();
 
             } else {
                 //Call from IDE
-                log.info("Call from IDE detected");
                 file = new File(CoreBot.class.getClassLoader().getResource(relativePath).getPath());
-                log.info("File: " + CoreBot.class.getClassLoader().getResource(relativePath).getPath());
             }
         } catch (URISyntaxException ex) {
             ex.printStackTrace();

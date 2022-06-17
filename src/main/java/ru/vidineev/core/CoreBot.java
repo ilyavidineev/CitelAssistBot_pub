@@ -31,22 +31,21 @@ public class CoreBot extends TelegramLongPollingBot {
         this.sendMessageService = sendMessageService;
         this.csvFileService = csvFileService;
         this.config = config;
-        log.info("Starting App. CoreBot construction done");
+        log.info("Application: Starting. Main construction done");
     }
 
     @SneakyThrows
     public void onUpdateReceived(Update update) {
 
         if (records == null) {
-            log.info("Records is empty. Trying to access to datafiles");
+            log.info("Application: Records in memory is empty. Trying to access to datafiles");
             records = csvFileService.ReadCSVData();
-            log.info("Data from CSV-file was read successfully");
+            log.info("Application: Data from CSV-file was read successfully");
         }
 
         String msgData = getDataFromUpdate(update);
 
         if (msgData != null && !msgData.isBlank()) {
-            log.info("Message received, msgData: " + msgData);
 
             for (RecordString rec : records) {
                 if (Objects.equals(rec.getNumber(), msgData)) {
@@ -68,10 +67,14 @@ public class CoreBot extends TelegramLongPollingBot {
 
         if (update.hasCallbackQuery()) {
             msgData = update.getCallbackQuery().getData();
-            log.info("ChatId:" + update.getCallbackQuery().getMessage().getChatId() + ". Received message with CallbackQuery-data: " + msgData);
+            log.info("ChatId:" + update.getCallbackQuery().getMessage().getChatId() + ", username: "
+                    + update.getCallbackQuery().getMessage().getChat().getUserName()
+                    + ". Received message with CallbackQuery-data: " + msgData);
         } else if (update.hasMessage() || update.getMessage().getText().startsWith("/")) {
             msgData = update.getMessage().getText();
-            log.info("ChatId:" + update.getMessage().getChatId() + ". Received message with command: " + msgData);
+            log.info("ChatId:" + update.getMessage().getChatId() + ", username: "
+                    + update.getMessage().getChat().getUserName()
+                    + ". Received message with command: " + msgData);
         }
         return msgData;
     }

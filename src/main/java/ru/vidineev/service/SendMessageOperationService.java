@@ -27,16 +27,21 @@ public class SendMessageOperationService {
 
     public SendMessage createNewMessage(Update update, String text, List<String> buttons) {
 
-        // Select where from are we get ChatId value
+        // Select where from are we get chatId and userName values
         String chatId;
-        if (update.hasCallbackQuery())
+        String userName;
+        if (update.hasCallbackQuery()) {
             chatId = update.getCallbackQuery().getMessage().getChatId().toString();
-        else
+            userName = update.getCallbackQuery().getMessage().getChat().getUserName();
+        }
+        else {
             chatId = update.getMessage().getChatId().toString();
+            userName = update.getMessage().getChat().getUserName();
+        }
 
         InlineKeyboardMarkup keyboardMarkup = setInlineKeyboard(buttons);
 
-        log.info("ChatId:" + chatId + ". Creating new message.");
+        log.info("ChatId:" + chatId + ", username: " + userName + ". Creating new message.");
 
         return SendMessage.builder()
                 .replyMarkup(keyboardMarkup)
@@ -52,7 +57,9 @@ public class SendMessageOperationService {
         int messageId = update.getCallbackQuery().getMessage().getMessageId();
         InlineKeyboardMarkup keyboardMarkup = setInlineKeyboard(buttons);
 
-        log.info("ChatId:" + chatId + ". Editing message with id:" + messageId);
+        log.info("ChatId:" + chatId
+                + ", username: "
+                + update.getCallbackQuery().getMessage().getChat().getUserName() + ". Editing message with id:" + messageId);
 
         return EditMessageText.builder()
                 .chatId(chatId)
