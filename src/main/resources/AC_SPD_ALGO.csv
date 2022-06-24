@@ -1,11 +1,12 @@
 /start;create;Бот-помощник по продукции CITEL.\nПозволяет подобрать УЗИП для различных применений.\nВ главном меню используйте команды для выбора применения, после чего следуйте инструкциям бота.\nДля запуска с самого начала введите команду /start;select;callback_data;Подбор УЗИП;contacts;callback_data;Контакты для связи;https://citel-moscow.ru;url;Перейти на сайт;https://citel-moscow.ru/downloads#sertificates;url;Скачать сертификаты на УЗИП;;;;;;
-contacts;create;Тел. для связи: +74951099590\nCайт https://citel-moscow.ru\nПочта: sales@citel-moscow.ru;;;;;;;;;;;;;;;;;;
-select;create;Подбор УЗИП для различных применений;start_AC;callback_data;Силовые УЗИП переменного тока;start_DC;callback_data;УЗИП постоянного тока;start_COAX;callback_data;Коаксиальные УЗИП;start_DATA;callback_data;УЗИП линий данных;start_LED;callback_data;УЗИП для освещения;start_SP;callback_data;УЗИП для солнечной энергетики
-start_DC;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
-start_COAX;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
-start_DATA;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
-start_LED;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
-start_SP;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
+contacts;create;Тел. для связи: +74951099590\nCайт https://citel-moscow.ru\nПочта: sales@citel-moscow.ru\nТехническая консультация +79951186500;;;;;;;;;;;;;;;;;;
+##select;create;Подбор УЗИП для различных применений;start_AC;callback_data;Силовые УЗИП переменного тока;start_DC;callback_data;УЗИП постоянного тока;start_COAX;callback_data;Коаксиальные УЗИП;start_DATA;callback_data;УЗИП линий данных;start_LED;callback_data;УЗИП для освещения;start_SP;callback_data;УЗИП для солнечной энергетики
+select;create;Подбор УЗИП для различных применений;start_AC;callback_data;Силовые УЗИП переменного тока (AC);https://citel-moscow.ru/catalogue;url;Подобрать любой УЗИП на сайте с помощью фильтров;;;;;;;;;;;;
+##start_DC;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
+##start_COAX;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
+##start_DATA;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
+##start_LED;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
+##start_SP;edit;В настоящий момент функционал ещё не реализован. Следите за обновлениями.;/start;callback_data;Главное меню;;;;;;;;;;;;;;;
 start_AC;edit;<b>Имеется ли внешняя молниезащита дома?</b>\nИЛИ\n<b>Питание приходит по воздушной линии 220/380В?</b>;21;callback_data;Да;22;callback_data;Нет;;;;;;;;;;;;
 21;edit;Количество фаз на входе?;31;callback_data;Три;32;callback_data;Одна;;;;;;;;;;;;
 22;edit;Количество фаз на входе?;33;callback_data;Три;34;callback_data;Одна;;;;;;;;;;;;
